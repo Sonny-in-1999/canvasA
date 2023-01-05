@@ -95,7 +95,8 @@ function onDoubleClick(event) {
     ctx.save(); //현재 상태 저장
     const text = textInput.value;
     ctx.lineWidth = 1;
-    ctx.strokeText(text, event.offsetX, event.offsetY);
+    ctx.font = "60px sans-serif";
+    ctx.fillText(text, event.offsetX, event.offsetY);
     ctx.restore(); //저장했던 체크포인트로 돌아감
 }
 
