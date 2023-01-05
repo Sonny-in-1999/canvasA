@@ -1,9 +1,11 @@
 const modeBtn = document.getElementById("mode-btn");
 const destroyBtn = document.getElementById("destroy-btn");
 const eraserBtn = document.getElementById("eraser-btn");
+const saveBtn = document.getElementById("save-btn");
 const colorOptions = Array.from(
   document.getElementsByClassName("color-option")
 );
+
 
 const textInput = document.getElementById("text");
 const fileInput = document.getElementById("file");
@@ -101,6 +103,15 @@ function onDoubleClick(event) {
     ctx.restore(); //저장했던 체크포인트로 돌아감
 }
 
+function onSaveClick(event) {
+    const url = canvas.toDataURL();
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "myDrawing.png";
+    a.click();
+}
+
+
 
 canvas.addEventListener("dblclick", onDoubleClick);
 //canvas.onmousemove = onMove;
@@ -113,7 +124,7 @@ canvas.addEventListener("click", onCanvasClick);
 lineWidth.addEventListener("change", onLineWidthChange);
 color.addEventListener("change", onColorChange);
 
-
+saveBtn.addEventListener("click", onSaveClick);
 modeBtn.addEventListener("click", onModeClick);
 destroyBtn.addEventListener("click", onDestroyClick);
 eraserBtn.addEventListener("click", onEraserClick);
